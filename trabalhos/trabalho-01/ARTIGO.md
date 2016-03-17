@@ -9,8 +9,8 @@ A linguagem Groovy foi idealizada por James Strachan em 2003. Ele mesmo deixa cl
 >“minha ideia inicial é fazer uma pequena linguagem dinâmica, que seja compilada diretamente em classes Java e que tenha toda a produtividade elegante encontrada em Ruby e Python, mas que permita reusar, estender, implementar e testar código Java já existente”.
 
 ##Sobre a linguagem
-A linguagem Groovy pode ser classificada destas maneiras:
-* **Permite tipagem estática e dinâmica: ** O programador tem a liberdade de utilizar recursos da tipagem estática e/ou dinâmica quando bem entender.
+A linguagem Groovy pode ser classificada destas maneiras:  
+* **Permite tipagem estática e dinâmica:** O programador tem a liberdade de utilizar recursos da tipagem estática e/ou dinâmica quando bem entender.
   Ao contrário do que acontece no Java, pode-se declarar uma variável inteira da seguinte forma:  
  ```groovy
   i = 20
