@@ -6,7 +6,7 @@ Este artigo dará uma breve introdução ao apache Groovy, uma linguagem de prog
 
 ##História e Influências
 A linguagem Groovy foi idealizada por James Strachan em 2003. Ele mesmo deixa claro as linguagens que influenciaram o Groovy, assim como seu principal objetivo.
->“minha idéia inicial é fazer uma pequena linguagem dinâmica, que seja compilada diretamente em classes Java e que tenha toda a produtividade elegante encontrada em Ruby e Python, mas que permita reusar, estender, implementar e testar código Java já existente”.
+>“minha ideia inicial é fazer uma pequena linguagem dinâmica, que seja compilada diretamente em classes Java e que tenha toda a produtividade elegante encontrada em Ruby e Python, mas que permita reusar, estender, implementar e testar código Java já existente”.
 
 ##Sobre a linguagem
 A linguagem Groovy pode ser classificada destas maneiras:
@@ -55,25 +55,25 @@ A seguir serão listados algumas características da linguagem que chamam a aten
 
 * **Facilidade no tratamento de Strings:** Muitas pessoas comentam sobre a facilidade do uso de strings no php. Para programadores php, a mudança (nesse sentido) para o groovy ocorre de maneira quase que instantânea. Se quiséssemos definir uma string contendo a variável _i_, declarada anteriormente, concatenando-a com um outra string, bastaria o seguinte:   
   ```groovy
-  novaString = i + “ outra string”
+  novaString = i + " outra string"
   ```   
   Veja a semelhança com o php (houve apenas uma mudança sintática):  
   ```php
-  $novaString = $i.“ outra string”;
+  $novaString = $i." outra string";
   ```   
   Também podemos fazer isso de outra maneira, através do operador de acesso _$_ (aqui a semelhança de escrita com php fica clara):
   Groovy:  
   ```groovy
-  novaString = “$i outra string”
+  novaString = "$i outra string"
   ```  
   php:
   ```php
-  $novaString = “$i outra string”;
+  $novaString = "$i outra string";
   ```     
   Assim como no php, o caracter de aspas duplas é diferente do caracter de aspas simples. 
   O caracter de aspas duplas permite que o operador $ funcione de fato, trazendo o conteúdo de outras variáveis para string. O caracter de aspas simples, entretanto, gera a string da forma como foi escrita. Vejamos abaixo o uso das aspas. Note que a variável $i foi definida anteriormente no artigo.  
   ```groovy
-  novaString = “$i”  
+  novaString = "$i"  
   novaString = '$i' 
   ```   
   A primeira linha do código acima atribuiria o valor _20_ para a variável _novaString_, enquanto que a segunda linha atribuiria o valor _$i_.
@@ -137,7 +137,7 @@ O Groovy cumpre seus objetivos iniciais, oferencendo várias facilidades para de
 * Site da linguagem: http://www.groovy-lang.org/
 * Compilador online utilizado: https://groovy-playground.appspot.com/
 * Verbete no Wikipédia: https://pt.wikipedia.org/wiki/Groovy
-* Um pequeno tutorial dividio em 3 partes: https://www.timroes.de/2015/06/27/groovy-tutorial-for-java-developers/
+* Um pequeno tutorial dividido em 3 partes: https://www.timroes.de/2015/06/27/groovy-tutorial-for-java-developers/
 * Uso de Arrays no Groovy e no Java: http://mrhaki.blogspot.com.br/2009/09/groovy-goodness-working-with-arrays.html
 * Artigo: "Um pouco sobre Groovy": http://www.devmedia.com.br/java-magazine-69-um-pouco-de-groovy-uma-linguagem-de-scripts-100-compativel-com-java/12542
 * Discução sobre desempenho do Groovy: http://www.grailsbrasil.com.br/post/show/2360
