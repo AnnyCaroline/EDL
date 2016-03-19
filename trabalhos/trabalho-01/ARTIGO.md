@@ -50,7 +50,7 @@ Entretando, o Groovy oferece mais recursos que o Java, como o uso de closures. P
 ## Pontos interessantes
 A seguir serão listados algumas características da linguagem que chamam a atenção inicialmente:
 * **Ponto e vírgula facultativo:** Em Groovy, o uso do ponto e vírgula é facultativo. Dessa forma, programadores que são acostumados a escrever com ponto e vírgula não vão ter de ficar prestando atenção para não digitar o caracter no final das linhas (migrantes de C para Python, por exemplo, sofrem com esse detalhe). Além disso, diminuímos a quantidade de caracteres, deixando o código mais limpo, e nunca teremos o problema de erros gerados pelo esquecimento de um ponto e vírgula, o que já ajuda bastante na escrita de um script.
-* **Métodos short-form ou forma reduzida:** Alguns métodos apresentam uma forma reduzida no groovy, facilitando o uso rotineiro. Um exemplo é o _System.out.println_ que ser somente _println_
+* **Métodos short-form ou forma reduzida:** Alguns métodos apresentam uma forma reduzida no groovy, facilitando o uso rotineiro. Um exemplo é o _System.out.println_, que pode ser substituído pelo _println_
 * **Parênteses não necessários:** Algumas chamadas de métodos dispensam o uso de parênteses, dimininuindo a poluição visual de um código. Isso pode ser um pouco confuso para algumas chamadas, portanto deve-se sempre ter isso em mente.
 
 * **Facilidade no tratamento de Strings:** Muitas pessoas comentam sobre a facilidade do uso de strings no php. Para programadores php, a mudança (nesse sentido) para o groovy ocorre de maneira quase que instantânea. Se quiséssemos definir uma string contendo a variável _i_, declarada anteriormente, concatenando-a com um outra string, bastaria o seguinte:   
