@@ -83,11 +83,11 @@ end
 
 function love.draw()
 
-
+	-- desenha a barrinha
 	love.graphics.rectangle("fill", barrinha.x, barrinha.y, barrinha.w, barrinha.h )
 						  --Drawmode mode, x, y,      width,    height
 
-	-- chama a closure de todas as bolinhas e guarda as propriedades x e y de cada uma, importantes para checar a colisão.
+	-- chama a closure de cada bolinha e guarda as propriedades x e y de cada uma, importantes para checar a colisão.
 	for i=1,num_bolinhas do
 		bolinhas[i].x, bolinhas[i].y = bolinhas[i].bolinha()
 	end
