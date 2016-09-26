@@ -12,18 +12,25 @@ function criarBolinha ()
     local x = math.random(0,larguraJanela) 
     local y = 0
     local v = math.random(4,11)
+
     return
         function ()
             y = y + v
             if (y>alturaJanela) then 
             	y=0
             	x=math.random(0,larguraJanela)
+				-- Nome: math.random
+				-- Propriedade: biblioteca
+				-- Binding time: compilação
+				-- Explicação: antes da execução o nosso código é "linkado" à biblioteca math a fim de "obter" a função random.
+
             	v=math.random(4,11)
             end
             love.graphics.circle("fill", x, y, raio_das_bolinhas, 100);
 
             return x, y
         end
+
 end
 
 function love.load()
@@ -36,11 +43,20 @@ function love.load()
 
 	--define as propriedades da barrinha
 	barrinha = {}
+
+	-- Nome: barrinha
+	-- Propriedade: endereço
+	-- Binding time: execução
+	-- Explicação: o construtor de tabelas do lua ({}) cria uma tabela dinamicamente, assim como seus elementos (nesse caso nenhum).
+
+
 	barrinha.x = 0
 	barrinha.y = 500
 	barrinha.w = 100
 	barrinha.h = 10
 	barrinha.v = 6
+
+
 
 	--numero de bolinhas que vão ficar caindo durante o jogo
 	num_bolinhas = 5
@@ -50,6 +66,10 @@ function love.load()
 	for i=1,num_bolinhas do
 		bolinhas[i] = {}
 		bolinhas[i].bolinha = criarBolinha()
+		-- Nome: bolinhas[i].bolinha
+		-- Propriedade: endereço
+		-- Binding time: execução
+		-- Explicação: a cada chamada do método criarBolinha uma nova closure será criada, dinamicamente, e seu endereço será amarrado com o nome "bolinhas[i].bolinha".
 		bolinhas[i].x = 0
 		bolinhas[i].y = 0
 	end
@@ -62,8 +82,16 @@ function love.update()
 	--mover barra
 	--se o jogador perder, não pode movimentar mais a barra
 	if (not gameOver) then
+			-- Nome: not
+			-- Propriedade: sintaxe
+			-- Binding time: design
+			-- Explicação: durante a design foi decidido que o operador de negação seria escrito como "not"
 		if love.keyboard.isDown("d") or love.keyboard.isDown("right") then
 			barrinha.x = barrinha.x + barrinha.v;
+			-- Nome: +
+			-- Propriedade: semântica
+			-- Binding time: compilação
+			-- Explicação: durante a compilação é decidida qual a implementação do operador +, isto é, como o operador irá funcionar
 		elseif love.keyboard.isDown("a") or love.keyboard.isDown("left") then
 			barrinha.x = barrinha.x - barrinha.v;			
 		end
@@ -72,6 +100,11 @@ function love.update()
 	--checa colissão da barrinha com as bolinhas
 	colissao = false
 	for i=1,num_bolinhas do
+		-- Nome: for
+		-- Propriedade: sintaxe
+		-- Binding time: design
+		-- Explicação: O(s) criador(es) da linguagem decidiram que "for" seria uma palavra reservada que faz parte da sintaxe do loop de repetição "for".
+
 		colissao = colissao or CheckCollision(barrinha.x, barrinha.y, barrinha.w, barrinha.h, bolinhas[i].x, bolinhas[i].y, raio_das_bolinhas*2, raio_das_bolinhas*2)
 	end
 
