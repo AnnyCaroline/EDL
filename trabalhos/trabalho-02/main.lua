@@ -19,10 +19,10 @@ function criarBolinha ()
             if (y>alturaJanela) then 
             	y=0
             	x=math.random(0,larguraJanela)
-				-- Nome: math.random
-				-- Propriedade: biblioteca
-				-- Binding time: compilação
-				-- Explicação: antes da execução o nosso código é "linkado" à biblioteca math a fim de "obter" a função random.
+		-- Nome: math.random
+		-- Propriedade: biblioteca
+		-- Binding time: compilação
+		-- Explicação: antes da execução o nosso código é "linkado" à biblioteca math a fim de "obter" a função random.
 
             	v=math.random(4,11)
             end
@@ -44,10 +44,11 @@ function love.load()
 	--define as propriedades da barrinha
 	barrinha = {}
 
-	-- Nome: barrinha
+	-- Nome: {}
 	-- Propriedade: endereço
 	-- Binding time: execução
-	-- Explicação: o construtor de tabelas do lua ({}) cria uma tabela dinamicamente, assim como seus elementos (nesse caso nenhum).
+	-- Explicação: o construtor de tabelas do lua ({}) cria uma tabela dinamicamente, 
+	--             assim como seus elementos (nesse caso nenhum).
 
 
 	barrinha.x = 0
@@ -67,9 +68,10 @@ function love.load()
 		bolinhas[i] = {}
 		bolinhas[i].bolinha = criarBolinha()
 		-- Nome: bolinhas[i].bolinha
-		-- Propriedade: endereço
+		-- Propriedade: valor
 		-- Binding time: execução
-		-- Explicação: a cada chamada do método criarBolinha uma nova closure será criada, dinamicamente, e seu endereço será amarrado com o nome "bolinhas[i].bolinha".
+		-- Explicação: a cada chamada do método criarBolinha uma nova closure será criada, 
+		--             dinamicamente, e seu endereço virará o valor da bolinhas[i].bolinha.
 		bolinhas[i].x = 0
 		bolinhas[i].y = 0
 	end
@@ -83,15 +85,18 @@ function love.update()
 	--se o jogador perder, não pode movimentar mais a barra
 	if (not gameOver) then
 			-- Nome: not
-			-- Propriedade: sintaxe
+			-- Propriedade: semântica
 			-- Binding time: design
-			-- Explicação: durante a design foi decidido que o operador de negação seria escrito como "not"
+			-- Explicação: durante a design foi decidido que "not" seria uma palavra 
+			--             reservada e que significaria um operador de negação, negando 
+			--             tudo que estiver escrito depois dele. 
 		if love.keyboard.isDown("d") or love.keyboard.isDown("right") then
 			barrinha.x = barrinha.x + barrinha.v;
 			-- Nome: +
 			-- Propriedade: semântica
 			-- Binding time: compilação
-			-- Explicação: durante a compilação é decidida qual a implementação do operador +, isto é, como o operador irá funcionar
+			-- Explicação: durante a compilação é decidida qual a implementação do operador +, 
+			--             isto é, como o operador irá funcionar. Isso depende dos operandos.
 		elseif love.keyboard.isDown("a") or love.keyboard.isDown("left") then
 			barrinha.x = barrinha.x - barrinha.v;			
 		end
@@ -101,9 +106,10 @@ function love.update()
 	colissao = false
 	for i=1,num_bolinhas do
 		-- Nome: for
-		-- Propriedade: sintaxe
+		-- Propriedade: semântica
 		-- Binding time: design
-		-- Explicação: O(s) criador(es) da linguagem decidiram que "for" seria uma palavra reservada que faz parte da sintaxe do loop de repetição "for".
+		-- Explicação: O(s) criador(es) da linguagem decidiram que "for" seria uma palavra reservada 
+		--            que faz parte da sintaxe do loop de repetição "for".
 
 		colissao = colissao or CheckCollision(barrinha.x, barrinha.y, barrinha.w, barrinha.h, bolinhas[i].x, bolinhas[i].y, raio_das_bolinhas*2, raio_das_bolinhas*2)
 	end
