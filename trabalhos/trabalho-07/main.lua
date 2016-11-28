@@ -25,6 +25,7 @@ local ALTURA_CARRINHO = 73
 local LARGURA_CARRINHO = 98
 local ALTURA_MOTO = 23
 local LARGURA_MOTO = 73
+local TEMPO_PARA_MUDANCA_DA_COR_DA_MOTO = 0.05
 
 local QUANTIDADE_ADVERSARIOS = 2
 
@@ -185,14 +186,16 @@ function verificarColisoesAdversarios()
 end
 
 function verificarQuadradosSairamTela()
+	local temp = qtdQuadrados;
 	for i=1, qtdQuadrados do
 		quadrados[i].x, quadrados[i].y = quadrados[i].atualizarPosicao()
 		if ((quadrados[i].x < -LARGURA_QUADRADO) or (quadrados[i].x > LARGURA_JANELA)) then
 			table.remove(quadrados, i)
-			qtdQuadrados = qtdQuadrados - 1
+			temp = temp - 1
 			break
 		end
 	end
+	qtdQuadrados = temp;
 end
 
 -- Verificador de comando do usuário
@@ -214,21 +217,47 @@ end
 -- Verificador de comando do usuário
 local movePlayer = coroutine.wrap(verificarInteracaoUsuario)
 
+local acumulador = 0;
+
 -- trabalho-07 - coroutine
-function mudarCor()
-	while true do
-		motoPlayerImg = moto_w
-		coroutine.yield()	
-		motoPlayerImg = moto_w
-		coroutine.yield()				
-		motoPlayerImg = moto_r
-		coroutine.yield()
-		motoPlayerImg = moto_r
-		coroutine.yield()			
-		motoPlayerImg = moto_b
-		coroutine.yield()	
-		motoPlayerImg = moto_b
-		coroutine.yield()						
+function mudarCor(dt)
+	while true do	
+
+		while true do
+			if (acumulador > TEMPO_PARA_MUDANCA_DA_COR_DA_MOTO) then
+				motoPlayerImg = moto_r
+				acumulador = 0
+				break
+			else
+				acumulador = acumulador + dt;
+				coroutine.yield()
+			end
+		end
+
+		while true do
+			if (acumulador > TEMPO_PARA_MUDANCA_DA_COR_DA_MOTO) then
+				motoPlayerImg = moto_w
+				acumulador = 0
+				break
+			else
+				acumulador = acumulador + dt;
+				coroutine.yield()
+			end
+		end		
+
+		while true do
+			if (acumulador > TEMPO_PARA_MUDANCA_DA_COR_DA_MOTO) then
+				motoPlayerImg = moto_b
+				acumulador = 0
+				break
+			else
+				acumulador = acumulador + dt;
+				coroutine.yield()
+			end
+		end		
+
+		
+
 	end
 end
 
@@ -242,10 +271,10 @@ function love.load()
 
 	love.graphics.setFont(love.graphics.newFont(50))
 	moto_r = love.graphics.newImage("/Imagens/Moto73x23_r.png")
-	moto_b = love.graphics.newImage("/Imagens/Moto73x23_b.png")
 	moto_w = love.graphics.newImage("/Imagens/Moto73x23_w.png")
+	moto_b = love.graphics.newImage("/Imagens/Moto73x23_b.png")
 
-	motoPlayerImg = moto_o
+	motoPlayerImg = moto_b
 
 	policeLogo = love.graphics.newImage("/Imagens/police.png")
 	carrinhoAdversarioImg = love.graphics.newImage("/Imagens/CarrinhoFundoTransparenteDir98x73.png")
@@ -297,6 +326,9 @@ function love.update(dt)
 			recorde = pontuacao
 		end		
 
+		-- trabalho-07 - coroutine
+		mCor(dt);		
+
 	else
 		if love.keyboard.isDown("return") then
 			tempoInicio = os.clock()
@@ -320,10 +352,6 @@ function love.draw()
 
 	love.graphics.draw(pistaImg)
 	love.graphics.print(string.format("Recorde: %d\n", recorde), LARGURA_JANELA-400, 30)
-
-
-	-- trabalho-07 - coroutine
-	mCor();
 
 	if not gameOver then
 
