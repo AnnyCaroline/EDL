@@ -53,6 +53,7 @@ function carregaRecordeDoArquivo()
     
  end
 
+
 function gravaRecordeNoArquivo()
 	local f = assert(io.open('recorde.txt','w'))
 	f:write(recorde)
@@ -230,7 +231,7 @@ function mudarCor(dt)
 				break
 			else
 				acumulador = acumulador + dt;
-				coroutine.yield()
+				dt = coroutine.yield(dt)
 			end
 		end
 
@@ -241,7 +242,7 @@ function mudarCor(dt)
 				break
 			else
 				acumulador = acumulador + dt;
-				coroutine.yield()
+				dt = coroutine.yield(dt)
 			end
 		end		
 
@@ -252,7 +253,7 @@ function mudarCor(dt)
 				break
 			else
 				acumulador = acumulador + dt;
-				coroutine.yield()
+				dt = coroutine.yield(dt)
 			end
 		end		
 
